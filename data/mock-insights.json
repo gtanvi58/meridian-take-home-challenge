@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "title": "Inventory running low on SKU-A12",
+    "priority": "HIGH",
+    "category": "Inventory",
+    "confidence": 0.87,
+    "date": "2025-07-28",
+    "evidence": "https://picsum.photos/seed/sku-a12/640/360",
+    "suggestedAction": "Order 500 more units before Friday."
+  },
+  {
+    "id": 2,
+    "title": "Spike in 5-star reviews after TikTok mention",
+    "priority": "MID",
+    "category": "Marketing",
+    "confidence": 0.81,
+    "date": "2025-07-28",
+    "evidence": "https://picsum.photos/seed/review-trend/640/360",
+    "suggestedAction": "Boost TikTok post and reply to top comments."
+  },
+  {
+    "id": 3,
+    "title": "Customer support response time is increasing",
+    "priority": "HIGH",
+    "category": "Support",
+    "confidence": 0.92,
+    "date": "2025-07-28",
+    "evidence": "https://picsum.photos/seed/support/640/360",
+    "suggestedAction": "Add one more support agent for peak hours."
+  },
+  {
+    "id": 4,
+    "title": "New newsletter signup rate dropping",
+    "priority": "MID",
+    "category": "Marketing",
+    "confidence": 0.75,
+    "date": "2025-07-28",
+    "evidence": "https://picsum.photos/seed/newsletter/640/360",
+    "suggestedAction": "Test new CTA on homepage and social media."
+  },
+  {
+    "id": 5,
+    "title": "Low stock alert for SKU-B99",
+    "priority": "HIGH",
+    "category": "Inventory",
+    "confidence": 0.88,
+    "date": "2025-07-28",
+    "evidence": "https://picsum.photos/seed/sku-b99/640/360",
+    "suggestedAction": "Order 200 units to avoid stockouts."
+  },
+  {
+    "id": 6,
+    "title": "Abandoned carts increasing by 15%",
+    "priority": "MID",
+    "category": "Sales",
+    "confidence": 0.79,
+    "date": "2025-07-28",
+    "evidence": "https://picsum.photos/seed/abandoned-carts/640/360",
+    "suggestedAction": "Send reminder emails with 10% discount."
+  },
+  {
+    "id": 7,
+    "title": "Positive review trend on Google Maps",
+    "priority": "LOW",
+    "category": "Marketing",
+    "confidence": 0.80,
+    "date": "2025-07-28",
+    "evidence": "https://picsum.photos/seed/google-reviews/640/360",
+    "suggestedAction": "Share top reviews on social media."
+  },
+  {
+    "id": 8,
+    "title": "Delivery delays reported for order #1123",
+    "priority": "HIGH",
+    "category": "Logistics",
+    "confidence": 0.90,
+    "date": "2025-07-28",
+    "evidence": "https://picsum.photos/seed/delivery/640/360",
+    "suggestedAction": "Contact courier to expedite shipments."
+  },
+  {
+    "id": 9,
+    "title": "Website traffic dipping on mobile devices",
+    "priority": "MID",
+    "category": "Analytics",
+    "confidence": 0.72,
+    "date": "2025-07-28",
+    "evidence": "https://picsum.photos/seed/traffic/640/360",
+    "suggestedAction": "Optimize mobile UX and page load speed."
+  },
+  {
+    "id": 10,
+    "title": "Customer churn rate slightly increased",
+    "priority": "LOW",
+    "category": "Support",
+    "confidence": 0.68,
+    "date": "2025-07-28",
+    "evidence": "https://picsum.photos/seed/churn/640/360",
+    "suggestedAction": "Reach out to lapsed customers with offers."
+  }
+]
