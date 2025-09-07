@@ -13,6 +13,6 @@ export type Insight = {
 
 export type ActionType = "snooze" | "dismiss" | "todo";
 
-export type FilterType = "keyword" | "priority" | "category" | "date"
+export type FilterType = "contains keyword" | "priority" | "category" | "date"
 
 export type CategoryType = "Inventory" | "Marketing" | "Sales" | "Logistics" | "Analytics" | "Support"

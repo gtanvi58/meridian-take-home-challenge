@@ -17,6 +17,9 @@ export default function ArakkisView() {
   const [insights, setInsights] = useState<Insight[]>(
     mockData as Insight[]
   );
+  const [keyword, setKeyword] = useState<string>("");
+  const [fromDate, setFromDate] = useState<string>("");
+  const [toDate, setToDate] = useState<string>("");
 
   // 🔹 central filter state
   const [filters, setFilters] = useState<Record<string, string[]>>({
@@ -44,9 +47,22 @@ export default function ArakkisView() {
         !filters.category.includes(insight.category as CategoryType)
       ) return false;
 
+      if (keyword) {
+      const lowerKeyword = keyword.toLowerCase();
+      return (
+        insight.title.toLowerCase().includes(lowerKeyword) ||
+        insight.suggestedAction.toLowerCase().includes(lowerKeyword) ||
+        insight.category.toLowerCase().includes(lowerKeyword)
+      );
+    }
+
+    const insightDate = new Date(insight.date);
+    if (fromDate && insightDate < new Date(fromDate)) return false;
+    if (toDate && insightDate > new Date(toDate)) return false;
+
       return true;
     });
-  }, [activeTab, snoozed, dismissed, todos, insights, filters]);
+  }, [activeTab, snoozed, dismissed, todos, insights, filters, keyword, fromDate, toDate]);
 
   const handleAction = (
     insight: Insight,
@@ -78,6 +94,12 @@ export default function ArakkisView() {
             <FilterOptions
               currentFilters={filters}
               setCurrentFilters={setFilters}
+              keyword={keyword}
+              setKeyword={setKeyword}
+              fromDate={fromDate}
+              toDate={toDate}
+              setFromDate={setFromDate}
+              setToDate={setToDate}
             />
           </div>
 

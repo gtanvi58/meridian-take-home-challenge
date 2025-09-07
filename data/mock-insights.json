@@ -5,7 +5,7 @@
     "priority": "HIGH",
     "category": "Inventory",
     "confidence": 0.87,
-    "date": "2025-07-28",
+    "date": "2025-07-15",
     "evidence": "https://picsum.photos/seed/sku-a12/640/360",
     "suggestedAction": "Order 500 more units before Friday."
   },
@@ -15,7 +15,7 @@
     "priority": "MID",
     "category": "Marketing",
     "confidence": 0.81,
-    "date": "2025-07-28",
+    "date": "2025-06-28",
     "evidence": "https://picsum.photos/seed/review-trend/640/360",
     "suggestedAction": "Boost TikTok post and reply to top comments."
   },
@@ -25,7 +25,7 @@
     "priority": "HIGH",
     "category": "Support",
     "confidence": 0.92,
-    "date": "2025-07-28",
+    "date": "2025-08-02",
     "evidence": "https://picsum.photos/seed/support/640/360",
     "suggestedAction": "Add one more support agent for peak hours."
   },
@@ -35,7 +35,7 @@
     "priority": "MID",
     "category": "Marketing",
     "confidence": 0.75,
-    "date": "2025-07-28",
+    "date": "2025-05-20",
     "evidence": "https://picsum.photos/seed/newsletter/640/360",
     "suggestedAction": "Test new CTA on homepage and social media."
   },
@@ -45,7 +45,7 @@
     "priority": "HIGH",
     "category": "Inventory",
     "confidence": 0.88,
-    "date": "2025-07-28",
+    "date": "2025-07-30",
     "evidence": "https://picsum.photos/seed/sku-b99/640/360",
     "suggestedAction": "Order 200 units to avoid stockouts."
   },
@@ -55,7 +55,7 @@
     "priority": "MID",
     "category": "Sales",
     "confidence": 0.79,
-    "date": "2025-07-28",
+    "date": "2025-06-14",
     "evidence": "https://picsum.photos/seed/abandoned-carts/640/360",
     "suggestedAction": "Send reminder emails with 10% discount."
   },
@@ -65,7 +65,7 @@
     "priority": "LOW",
     "category": "Marketing",
     "confidence": 0.80,
-    "date": "2025-07-28",
+    "date": "2025-08-11",
     "evidence": "https://picsum.photos/seed/google-reviews/640/360",
     "suggestedAction": "Share top reviews on social media."
   },
@@ -75,7 +75,7 @@
     "priority": "HIGH",
     "category": "Logistics",
     "confidence": 0.90,
-    "date": "2025-07-28",
+    "date": "2025-09-03",
     "evidence": "https://picsum.photos/seed/delivery/640/360",
     "suggestedAction": "Contact courier to expedite shipments."
   },
@@ -85,7 +85,7 @@
     "priority": "MID",
     "category": "Analytics",
     "confidence": 0.72,
-    "date": "2025-07-28",
+    "date": "2025-05-30",
     "evidence": "https://picsum.photos/seed/traffic/640/360",
     "suggestedAction": "Optimize mobile UX and page load speed."
   },
@@ -95,7 +95,7 @@
     "priority": "LOW",
     "category": "Support",
     "confidence": 0.68,
-    "date": "2025-07-28",
+    "date": "2025-06-05",
     "evidence": "https://picsum.photos/seed/churn/640/360",
     "suggestedAction": "Reach out to lapsed customers with offers."
   }
