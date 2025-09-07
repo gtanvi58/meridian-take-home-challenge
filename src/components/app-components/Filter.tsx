@@ -41,6 +41,12 @@ export default function Filter({
   setToDate,
 }: FilterProps) {
   const selectedItems = currentFilters[filterName] || [];
+  const [localKeyword, setLocalKeyword] = React.useState(keyword ?? "");
+  const [open, setOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    setLocalKeyword(keyword ?? ""); // sync external keyword -> local input
+  }, [keyword]);
 
   const handleToggle = (
     item: string,
@@ -61,7 +67,7 @@ export default function Filter({
   };
 
   return (
-    <DropdownMenu>
+    <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild>
         <Button variant="outline">
           {filterName} <ChevronDown className="w-4 h-4 ml-2" />
@@ -81,14 +87,21 @@ export default function Filter({
   ))}
 
   {filterName === "contains keyword" && (
-    <input
-      type="text"
-      placeholder="Enter keyword"
-      value={keyword}
-      onChange={(e) => setKeyword?.(e.target.value)}
-      className="border rounded-md px-3 py-1 w-full mt-2"
-    />
-  )}
+          <input
+            type="text"
+            placeholder="Enter keyword"
+            value={localKeyword}
+            onChange={(e) => setLocalKeyword(e.target.value)} // only local state
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                setKeyword?.(localKeyword); // commit filter
+                setOpen(false); // close dropdown
+              }
+            }}
+            className="border rounded-md px-3 py-1 w-full mt-2"
+          />
+        )}
 
   {filterName === "date" && (
     <div className="flex gap-2 mt-2">

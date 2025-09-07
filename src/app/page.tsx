@@ -6,6 +6,8 @@ import SideBarComponent from "../components/app-components/SideBarComponent";
 import FilterOptions from "../components/app-components/FilterOptions";
 import { Priority, Insight, CategoryType } from "@/types/insights";
 import mockData from "../../data/mock-insights.json";
+import ActiveFilters from "../components/app-components/ActiveFilters";
+
 
 export default function ArakkisView() {
   const [activeTab, setActiveTab] = useState<
@@ -78,6 +80,17 @@ export default function ArakkisView() {
     if (action === "todo") setTodos((prev) => [...prev, insight]);
   };
 
+  const removeFilter = (type: string, value?: string) => {
+    if (type === "keyword") return setKeyword("");
+    if (type === "fromDate") return setFromDate("");
+    if (type === "toDate") return setToDate("");
+    
+    setFilters((prev) => ({
+      ...prev,
+      [type]: prev[type]?.filter((v) => v !== value) || [],
+    }));
+  };
+
   return (
     <SidebarProvider>
       <div className="flex min-h-screen">
@@ -102,6 +115,14 @@ export default function ArakkisView() {
               setToDate={setToDate}
             />
           </div>
+
+          <ActiveFilters
+            filters={filters}
+            keyword={keyword}
+            fromDate={fromDate}
+            toDate={toDate}
+            removeFilter={removeFilter}
+          />
 
           <AccordionComponent
             activeTab={activeTab}
