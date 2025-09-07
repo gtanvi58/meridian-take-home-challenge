@@ -26,6 +26,13 @@ export default function ArakkisView() {
     priority: [],
     category: [],
   });
+  const tabHeadings: Record<typeof activeTab, string> = {
+  all: "Your Insights",
+  snoozed: "Snoozed Insights",
+  dismissed: "Dismissed Insights",
+  todos: "Your To-Dos",
+};
+
 
 const filteredList = useMemo(() => {
   let baseList: Insight[] = [];
@@ -137,33 +144,39 @@ const handleAction = (
         />
 
         <main className="flex-1 p-6">
-          <div className="mb-4">
-            <FilterOptions
-              currentFilters={filters}
-              setCurrentFilters={setFilters}
-              keyword={keyword}
-              setKeyword={setKeyword}
-              fromDate={fromDate}
-              toDate={toDate}
-              setFromDate={setFromDate}
-              setToDate={setToDate}
-            />
-          </div>
+  <h1 className="block w-full text-2xl font-bold mb-6 text-black text-center">
+  {tabHeadings[activeTab]}
+</h1>
 
-          <ActiveFilters
-            filters={filters}
-            keyword={keyword}
-            fromDate={fromDate}
-            toDate={toDate}
-            removeFilter={removeFilter}
-          />
+  <div className="mb-4">
+    <FilterOptions
+      currentFilters={filters}
+      setCurrentFilters={setFilters}
+      keyword={keyword}
+      setKeyword={setKeyword}
+      fromDate={fromDate}
+      toDate={toDate}
+      setFromDate={setFromDate}
+      setToDate={setToDate}
+    />
+  </div>
 
-          <AccordionComponent
-            activeTab={activeTab}
-            handleAction={handleAction}
-            getActiveList={() => filteredList}
-          />
-        </main>
+  <ActiveFilters
+    filters={filters}
+    keyword={keyword}
+    fromDate={fromDate}
+    toDate={toDate}
+    removeFilter={removeFilter}
+  />
+
+  <AccordionComponent
+    activeTab={activeTab}
+    handleAction={handleAction}
+    getActiveList={() => filteredList}
+  />
+</main>
+
+
       </div>
     </SidebarProvider>
   );
