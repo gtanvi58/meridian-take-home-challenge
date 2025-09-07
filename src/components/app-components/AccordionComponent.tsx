@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -33,6 +34,21 @@ export default function AccordionComponent({
   handleAction,
   getActiveList,
 }: AccordionComponentProps) {
+
+const [hoveredTitle, setHoveredTitle] = useState<string | null>(null);
+const [hoverPosition, setHoverPosition] = useState<{ x: number; y: number } | null>(null);
+
+let handleHoverStart = (title: string, e: React.MouseEvent) => {
+  const rect = (e.target as HTMLElement).getBoundingClientRect();
+  setHoveredTitle(title);
+  setHoverPosition({ x: rect.left, y: rect.bottom });
+};
+
+let handleHoverEnd = () => {
+  setHoveredTitle(null);
+  setHoverPosition(null);
+};
+
   const activeInsights = getActiveList();
 
   return (
@@ -54,9 +70,13 @@ export default function AccordionComponent({
                   <span className="text-base md:text-lg font-semibold text-slate-800">
                     {insight.category}
                   </span>
-                  <span className="col-span-2 text-base md:text-lg font-medium text-slate-600 truncate">
-                    {insight.title}
-                  </span>
+                 <span
+  className="col-span-2 text-base md:text-lg font-medium text-slate-600 truncate relative"
+  onMouseEnter={(e) => handleHoverStart(insight.title, e)}
+  onMouseLeave={handleHoverEnd}
+>
+  {insight.title}
+</span>
                   <span className="text-sm md:text-base text-slate-500 text-center">
                     {new Date(insight.date).toLocaleDateString()}
                   </span>
@@ -114,6 +134,23 @@ export default function AccordionComponent({
     </span>
   </div>
 )}
+<AnimatePresence>
+  {hoveredTitle && hoverPosition && (
+    <motion.div
+      initial={{ opacity: 0, y: -5 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -5 }}
+      transition={{ duration: 0.2 }}
+      className="fixed z-50 bg-white border border-slate-200 shadow-lg rounded-lg p-3 text-sm text-slate-700 max-w-xs"
+      style={{
+        top: hoverPosition.y + 8, // small offset
+        left: hoverPosition.x,
+      }}
+    >
+      {hoveredTitle}
+    </motion.div>
+  )}
+</AnimatePresence>
 
           </motion.div>
         ))}
