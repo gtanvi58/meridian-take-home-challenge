@@ -4,6 +4,7 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import AccordionComponent from "../components/app-components/AccordionComponent";
 import SideBarComponent from "../components/app-components/SideBarComponent";
 import FilterOptions from "../components/app-components/FilterOptions";
+import InsightsAI from "../components/app-components/InsightsAI";
 import { Priority, Insight, CategoryType, ActionType, SnoozeDuration } from "@/types/insights";
 import mockData from "../../data/mock-insights.json";
 import ActiveFilters from "../components/app-components/ActiveFilters";
@@ -149,6 +150,7 @@ const handleAction = (
 </h1>
 
   <div className="mb-4">
+    <InsightsAI />
     <FilterOptions
       currentFilters={filters}
       setCurrentFilters={setFilters}
