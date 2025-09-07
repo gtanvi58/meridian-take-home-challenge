@@ -9,6 +9,7 @@ export type Insight = {
   date: string;
   evidence?: string;
   suggestedAction: string;
+  snoozeUntil: Date
 };
 
 export type ActionType = "snooze" | "dismiss" | "todo";
@@ -16,3 +17,9 @@ export type ActionType = "snooze" | "dismiss" | "todo";
 export type FilterType = "contains keyword" | "priority" | "category" | "date"
 
 export type CategoryType = "Inventory" | "Marketing" | "Sales" | "Logistics" | "Analytics" | "Support"
+
+export type SnoozeDuration = {
+  days: number;
+  hours: number;
+  minutes: number;
+};
