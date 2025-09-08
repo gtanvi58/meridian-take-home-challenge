@@ -152,7 +152,11 @@ const handleAction = (
 
 <main className="flex-1 flex flex-col min-h-screen p-6">
   {/* Display message when list is empty */}
-  {filteredList.length === 0 ?
+  {filteredList.length === 0 && (filters.priority.length === 0 &&
+  filters.category.length === 0 &&
+  keyword.trim() === "" &&
+  fromDate === "" &&
+  toDate === "") ?
    (
     <div className="fixed inset-0 flex items-center justify-center">
   <div className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl p-6 text-center shadow-sm max-w-md">
