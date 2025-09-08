@@ -45,6 +45,7 @@ const filteredList = useMemo(() => {
     default: baseList = allInsights;
   }
 
+  //function to implement individual filters.
   const filtered = baseList.filter((insight) => {
     if (
       filters.priority.length > 0 &&
@@ -80,6 +81,7 @@ const filteredList = useMemo(() => {
     LOW: 3,
   };
 
+  //ensure filtered results are sorted.
   return filtered.sort((a, b) => {
     const priorityDiff =
       priorityOrder[a.priority as Priority] -
@@ -124,7 +126,7 @@ const handleAction = (
   if (action === "todo") setTodos((prev) => [...prev, insight]);
    if (action === "complete") setCompleted((prev) => [...prev, insight]);
 };
-
+  //when a filter badge is removed
   const removeFilter = (type: string, value?: string) => {
     if (type === "keyword") return setKeyword("");
     if (type === "fromDate") return setFromDate("");
@@ -149,7 +151,7 @@ const handleAction = (
         />
 
 <main className="flex-1 flex flex-col min-h-screen p-6">
-  {/* Page title */}
+  {/* Display message when list is empty */}
   {filteredList.length === 0 ?
    (
     <div className="fixed inset-0 flex items-center justify-center">

@@ -6,6 +6,7 @@ type HoverPopoverProps = {
   position: { x: number; y: number };
 };
 
+//for hover over insight title
 export default function HoverPopover({ title, position }: HoverPopoverProps) {
   return (
     <motion.div

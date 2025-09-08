@@ -12,6 +12,7 @@ type ActiveFiltersProps = {
   removeFilter: (type: string, value?: string) => void;
 };
 
+//to display the currently applied filters
 export default function ActiveFilters({
   filters,
   keyword,

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button"; // use the same Button component as the rest of your app
+import { Button } from "@/components/ui/button";
 
 export default function InsightsAI() {
   const [question, setQuestion] = useState("");
