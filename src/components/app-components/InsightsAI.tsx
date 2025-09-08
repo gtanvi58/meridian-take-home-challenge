@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button"; // use the same Button component as the rest of your app
-import mockData from "../../../data/mock-insights.json";
 
 export default function InsightsAI() {
   const [question, setQuestion] = useState("");

@@ -27,7 +27,7 @@ export default function ArakkisView() {
     category: [],
   });
   const tabHeadings: Record<typeof activeTab, string> = {
-  all: "Your Insights",
+  all: "Your Daily Overview",
   snooze: "Snoozed Insights",
   dismiss: "Dismissed Insights",
   todo: "Your To-Dos",

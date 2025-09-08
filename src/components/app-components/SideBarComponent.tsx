@@ -38,7 +38,7 @@ export default function SideBarComponent({
             setActiveTab={setActiveTab}
             actionType={"all"}
             currentInsights={allInsights}
-            textToDisplay={"All"}
+            textToDisplay={"Daily Overview"}
           />
           <SideBarMenuItemComponent
             setActiveTab={setActiveTab}
