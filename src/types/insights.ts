@@ -12,7 +12,7 @@ export type Insight = {
   snoozeUntil: Date
 };
 
-export type ActionType = "snooze" | "dismiss" | "todo";
+export type ActionType = "snooze" | "dismiss" | "todo" | "complete" | "all";
 
 export type FilterType = "contains keyword" | "priority" | "category" | "date"
 

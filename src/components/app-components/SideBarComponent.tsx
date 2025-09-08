@@ -8,23 +8,24 @@ import {
   SidebarMenuItem,
   SidebarMenuButton
 } from "@/components/ui/sidebar";
-
-type ActiveTab = "all" | "snoozed" | "dismissed" | "todos";
+import { ActionType } from "@/types/insights";
 
 type SideBarComponentProps = {
-  setActiveTab: (tab: ActiveTab) => void;
-  insights: any[];
+  setActiveTab: (tab: ActionType) => void;
+  allInsights: any[];
   snoozed: any[];
   dismissed: any[];
   todos: any[];
+  complete: any[]
 };
 
 export default function SideBarComponent({
   setActiveTab,
-  insights,
+  allInsights,
   snoozed,
   dismissed,
   todos,
+  complete
 }: SideBarComponentProps){
     return (
         <Sidebar className="w-64 border-r">
@@ -35,22 +36,27 @@ export default function SideBarComponent({
                 <SidebarMenu>
                   <SidebarMenuItem>
                     <SidebarMenuButton onClick={() => setActiveTab("all")}>
-                      All ({insights.length})
+                      All ({allInsights.length})
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                   <SidebarMenuItem>
-                    <SidebarMenuButton onClick={() => setActiveTab("snoozed")}>
+                    <SidebarMenuButton onClick={() => setActiveTab("snooze")}>
                       Snoozed ({snoozed.length})
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                   <SidebarMenuItem>
-                    <SidebarMenuButton onClick={() => setActiveTab("dismissed")}>
+                    <SidebarMenuButton onClick={() => setActiveTab("dismiss")}>
                       Dismissed ({dismissed.length})
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                   <SidebarMenuItem>
-                    <SidebarMenuButton onClick={() => setActiveTab("todos")}>
+                    <SidebarMenuButton onClick={() => setActiveTab("todo")}>
                       To-Dos ({todos.length})
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton onClick={() => setActiveTab("complete")}>
+                      Completed ({complete.length})
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 </SidebarMenu>

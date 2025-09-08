@@ -10,13 +10,12 @@ import mockData from "../../data/mock-insights.json";
 import ActiveFilters from "../components/app-components/ActiveFilters";
 
 export default function ArakkisView() {
-  const [activeTab, setActiveTab] = useState<
-    "all" | "snoozed" | "dismissed" | "todos"
-  >("all");
+  const [activeTab, setActiveTab] = useState<ActionType>("all");
   const [snoozed, setSnoozed] = useState<Insight[]>([]);
   const [dismissed, setDismissed] = useState<Insight[]>([]);
   const [todos, setTodos] = useState<Insight[]>([]);
-  const [insights, setInsights] = useState<Insight[]>(
+  const [completed, setCompleted] = useState<Insight[]>([]);
+  const [allInsights, setAllInsights] = useState<Insight[]>(
     mockData as Insight[]
   );
   const [keyword, setKeyword] = useState<string>("");
@@ -29,19 +28,21 @@ export default function ArakkisView() {
   });
   const tabHeadings: Record<typeof activeTab, string> = {
   all: "Your Insights",
-  snoozed: "Snoozed Insights",
-  dismissed: "Dismissed Insights",
-  todos: "Your To-Dos",
+  snooze: "Snoozed Insights",
+  dismiss: "Dismissed Insights",
+  todo: "Your To-Dos",
+  complete: "Completed Tasks"
 };
 
 
 const filteredList = useMemo(() => {
   let baseList: Insight[] = [];
   switch (activeTab) {
-    case "snoozed": baseList = snoozed; break;
-    case "dismissed": baseList = dismissed; break;
-    case "todos": baseList = todos; break;
-    default: baseList = insights;
+    case "snooze": baseList = snoozed; break;
+    case "dismiss": baseList = dismissed; break;
+    case "todo": baseList = todos; break;
+    case "complete" : baseList = completed; break;
+    default: baseList = allInsights;
   }
 
   const filtered = baseList.filter((insight) => {
@@ -86,7 +87,7 @@ const filteredList = useMemo(() => {
     if (priorityDiff !== 0) return priorityDiff;
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
-}, [activeTab, snoozed, dismissed, todos, insights, filters, keyword, fromDate, toDate]);
+}, [activeTab, snoozed, dismissed, todos, allInsights, filters, keyword, fromDate, toDate]);
 
 const handleAction = (
   insight: Insight,
@@ -94,7 +95,7 @@ const handleAction = (
   duration?: SnoozeDuration
 ) => {
   // Remove from all lists
-  setInsights((prev) => prev.filter((i) => i.id !== insight.id));
+  setAllInsights((prev) => prev.filter((i) => i.id !== insight.id));
   setSnoozed((prev) => prev.filter((i) => i.id !== insight.id));
   setDismissed((prev) => prev.filter((i) => i.id !== insight.id));
   setTodos((prev) => prev.filter((i) => i.id !== insight.id));
@@ -114,12 +115,13 @@ const handleAction = (
     // Timer to return the task to main list
     setTimeout(() => {
       setSnoozed((prev) => prev.filter((i) => i.id !== insight.id));
-      setInsights((prev) => [...prev, insight]);
+      setAllInsights((prev) => [...prev, insight]);
     }, snoozeUntil.getTime() - now.getTime());
   }
 
   if (action === "dismiss") setDismissed((prev) => [...prev, insight]);
   if (action === "todo") setTodos((prev) => [...prev, insight]);
+   if (action === "complete") setCompleted((prev) => [...prev, insight]);
 };
 
   const removeFilter = (type: string, value?: string) => {
@@ -141,7 +143,8 @@ const handleAction = (
           snoozed={snoozed}
           dismissed={dismissed}
           todos={todos}
-          insights={insights}
+          allInsights={allInsights}
+          complete={completed}
         />
 
         <main className="flex-1 p-6">

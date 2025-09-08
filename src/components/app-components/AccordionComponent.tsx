@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -50,6 +50,17 @@ let handleHoverEnd = () => {
 };
 
   const activeInsights = getActiveList();
+
+ useEffect(() => {
+  const images: string[] = activeInsights
+    .map(i => i.evidence)
+    .filter((e): e is string => !!e);
+
+  images.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
+}, [activeInsights]);
 
   return (
     <Accordion type="multiple" className="space-y-6 w-full max-w-4xl mx-auto">
@@ -126,6 +137,15 @@ let handleHoverEnd = () => {
                   Add to tasks
                 </Button>
               )}
+              {activeTab !== "done" && (
+  <Button
+  className="bg-green-200 hover:bg-green-300 text-green-900"
+  size="sm"
+  onClick={() => handleAction(insight, "complete")}
+>
+  Mark as Complete
+</Button>
+)}
             </div>
             {insight.snoozeUntil && (
   <div className="ml-auto text-right px-4 py-2">
