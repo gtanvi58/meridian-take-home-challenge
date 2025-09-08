@@ -4,12 +4,10 @@ import {
   SidebarGroup,
   SidebarGroupLabel,
   SidebarGroupContent,
-  SidebarMenu,
-  SidebarMenuItem,
-  SidebarMenuButton
+  SidebarMenu
 } from "@/components/ui/sidebar";
 import { ActionType } from "@/types/insights";
-
+import SideBarMenuItemComponent from "./SideBarMenuItemComponent";
 type SideBarComponentProps = {
   setActiveTab: (tab: ActionType) => void;
   allInsights: any[];
@@ -34,31 +32,27 @@ export default function SideBarComponent({
               <SidebarGroupLabel>Tasks</SidebarGroupLabel>
               <SidebarGroupContent>
                 <SidebarMenu>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton onClick={() => setActiveTab("all")}>
-                      All ({allInsights.length})
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton onClick={() => setActiveTab("snooze")}>
-                      Snoozed ({snoozed.length})
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton onClick={() => setActiveTab("dismiss")}>
-                      Dismissed ({dismissed.length})
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton onClick={() => setActiveTab("todo")}>
-                      To-Dos ({todos.length})
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton onClick={() => setActiveTab("complete")}>
-                      Completed ({complete.length})
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
+                  <SideBarMenuItemComponent setActiveTab={setActiveTab}
+                  actionType={"all"}
+                  currentInsights={allInsights}
+                  textToDisplay={"All"}/>
+                  <SideBarMenuItemComponent setActiveTab={setActiveTab}
+                  actionType={"snooze"}
+                  currentInsights={snoozed}
+                  textToDisplay={"Snoozed"}/>
+                  <SideBarMenuItemComponent setActiveTab={setActiveTab}
+                  actionType={"dismiss"}
+                  currentInsights={dismissed}
+                  textToDisplay={"Dismissed"}/>
+                  <SideBarMenuItemComponent setActiveTab={setActiveTab}
+                  actionType={"todo"}
+                  currentInsights={todos}
+                  textToDisplay={"Todos"}/>
+                  <SideBarMenuItemComponent setActiveTab={setActiveTab}
+                  actionType={"complete"}
+                  currentInsights={complete}
+                  textToDisplay={"Completed"}/>
+                 
                 </SidebarMenu>
               </SidebarGroupContent>
             </SidebarGroup>
