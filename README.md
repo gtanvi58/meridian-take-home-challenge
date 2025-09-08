@@ -26,7 +26,7 @@ The following primitives from the [shadcn/ui](https://ui.shadcn.com) library wer
 
 # Why this design enables a 5-minute review  
 
-The dashboard is intentionally optimized for speed and focus. Insights are auto-sorted by priority and recency, so the most critical items rise to the top without extra effort. For users pressed for time, the built-in **AI assistant acts as a shortcut**—summarizing high-priority actions or providing quick context without the need to read every detail.  
+The dashboard is intentionally optimized for speed and focus. Insights are auto-sorted by priority and recency, so the most critical items rise to the top without extra effort. For users pressed for time, the built-in **AI assistant acts as a shortcut**—summarizing high-priority actions or providing quick context without the need to read every detail. Each insight has a priority label which is colour coded so that the user can quickly glance through insights that are most important to them.
 
 The user can hover over each insight to view the full insight ensuring no clutter in their main view. The experience is further streamlined with **powerful filters and search**: users can instantly narrow their results down by keyword, date range, priority, or category to spotlight only what matters in the moment. For ease of use, the user has a clear view of the currently applied filters and can remove them individually as required. Dedicated **tabs for task states** (snoozed, dismissed, to-do, completed) keep the view uncluttered while giving full control. Snoozed insights clearly show their return time, so nothing is lost.  
 
