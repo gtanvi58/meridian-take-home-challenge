@@ -99,6 +99,7 @@ const handleAction = (
   setSnoozed((prev) => prev.filter((i) => i.id !== insight.id));
   setDismissed((prev) => prev.filter((i) => i.id !== insight.id));
   setTodos((prev) => prev.filter((i) => i.id !== insight.id));
+  setCompleted((prev) => prev.filter((i) => i.id !== insight.id));
 
   if (action === "snooze" && duration) {
     const now = new Date();
@@ -147,39 +148,65 @@ const handleAction = (
           complete={completed}
         />
 
-        <main className="flex-1 p-6">
-  <h1 className="block w-full text-2xl font-bold mb-6 text-black text-center">
-  {tabHeadings[activeTab]}
-</h1>
-
-  <div className="mb-4">
-    <InsightsAI />
-    <FilterOptions
-      currentFilters={filters}
-      setCurrentFilters={setFilters}
-      keyword={keyword}
-      setKeyword={setKeyword}
-      fromDate={fromDate}
-      toDate={toDate}
-      setFromDate={setFromDate}
-      setToDate={setToDate}
-    />
+<main className="flex-1 flex flex-col min-h-screen p-6">
+  {/* Page title */}
+  {filteredList.length === 0 ?
+   (
+    <div className="fixed inset-0 flex items-center justify-center">
+  <div className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl p-6 text-center shadow-sm max-w-md">
+    <p className="text-gray-600 dark:text-gray-300 text-lg">
+      {activeTab === "dismiss"
+        ? "You have no dismissed insights."
+        : activeTab === "todo"
+        ? "You have no tasks to do."
+        : activeTab === "snooze"
+        ? "You have no snoozed insights."
+        : activeTab === "complete"
+        ? "You have no completed tasks."
+        : "No insights available."}
+    </p>
   </div>
+</div>
 
-  <ActiveFilters
-    filters={filters}
-    keyword={keyword}
-    fromDate={fromDate}
-    toDate={toDate}
-    removeFilter={removeFilter}
-  />
 
-  <AccordionComponent
-    activeTab={activeTab}
-    handleAction={handleAction}
-    getActiveList={() => filteredList}
-  />
+  ) : (
+    <>
+    <h1 className="text-2xl font-bold mb-6 text-black text-center">
+    {tabHeadings[activeTab]}
+  </h1>
+      <div className="mb-4">
+        <InsightsAI />
+        <FilterOptions
+          currentFilters={filters}
+          setCurrentFilters={setFilters}
+          keyword={keyword}
+          setKeyword={setKeyword}
+          fromDate={fromDate}
+          toDate={toDate}
+          setFromDate={setFromDate}
+          setToDate={setToDate}
+        />
+      </div>
+
+      <ActiveFilters
+        filters={filters}
+        keyword={keyword}
+        fromDate={fromDate}
+        toDate={toDate}
+        removeFilter={removeFilter}
+      />
+
+      <AccordionComponent
+        activeTab={activeTab}
+        handleAction={handleAction}
+        getActiveList={() => filteredList}
+      />
+    </>
+  )}
 </main>
+
+
+
 
 
       </div>

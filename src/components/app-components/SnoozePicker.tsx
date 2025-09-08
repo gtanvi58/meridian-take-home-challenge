@@ -29,7 +29,12 @@ export default function SnoozePicker({ onConfirm }: SnoozePickerProps) {
       </PopoverTrigger>
 
       <PopoverContent className="w-64 p-4">
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3"
+        onKeyDown={(e) => {
+      if (e.key === "Enter") {
+        handleConfirm();
+      }
+    }}>
           <div className="flex justify-between items-center gap-2">
             <div className="flex flex-col">
               <label className="text-sm font-medium">Days</label>

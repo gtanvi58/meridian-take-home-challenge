@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Button } from "@/components/ui/button"; // use the same Button component as the rest of your app
 import mockData from "../../../data/mock-insights.json";
 
 export default function InsightsAI() {
@@ -8,50 +9,54 @@ export default function InsightsAI() {
   const [answer, setAnswer] = useState("");
   const [loading, setLoading] = useState(false);
 
-const handleAsk = async () => {
-  if (!question) return;
-  setLoading(true);
+  const handleAsk = async () => {
+    if (!question) return;
+    setLoading(true);
 
-  try {
-    const res = await fetch("http://localhost:8000/ask", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question }),
-    });
-    const data = await res.json();
-    setAnswer(data.answer);
-  } catch (err) {
-    console.error(err);
-    setAnswer("Error processing question.");
-  }
+    try {
+      const res = await fetch("http://localhost:8000/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question }),
+      });
+      const data = await res.json();
+      setAnswer(data.answer);
+    } catch (err) {
+      console.error(err);
+      setAnswer("Error processing question.");
+    }
 
-  setLoading(false);
-};
+    setLoading(false);
+  };
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-900 p-4 rounded-lg mb-6 w-full max-w-4xl mx-auto">
-      <h2 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200 text-center">
+<div className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-md w-full max-w-4xl mx-auto my-8">
+      <h2 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200 text-center">
         Ask AI about your insights
       </h2>
-      <div className="flex gap-2 mb-2">
+
+      <div className="flex flex-col sm:flex-row gap-3 mb-4">
         <input
           type="text"
-          className="flex-1 p-2 border rounded-md focus:outline-none focus:ring"
+          className="flex-1 p-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring focus:ring-gray-300 dark:focus:ring-gray-600"
           placeholder="Type your question..."
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
         />
-        <button
-          className="bg-blue-600 text-white px-4 rounded-md hover:bg-blue-700"
+
+        <Button
+          className="bg-gray-800 text-white hover:bg-black flex-shrink-0"
           onClick={handleAsk}
           disabled={loading}
         >
           {loading ? "Thinking..." : "Ask"}
-        </button>
+        </Button>
       </div>
+
       {answer && (
-        <div className="bg-white dark:bg-gray-800 p-3 rounded-md border border-gray-300 dark:border-gray-700 mt-2">
-          <strong>Answer:</strong> {answer}
+        <div className="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-300 dark:border-gray-700 shadow-sm">
+          <span className="font-semibold text-gray-800 dark:text-gray-200">Answer:</span>{" "}
+          <span className="text-gray-700 dark:text-gray-300">{answer}</span>
         </div>
       )}
     </div>

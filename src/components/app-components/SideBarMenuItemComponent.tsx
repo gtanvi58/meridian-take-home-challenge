@@ -18,10 +18,13 @@ export default function SideBarMenuItemComponent({
       actionType
 }: SideBarMenuItemComponentProps){
     return (
+        <div className="px-4 py-2 rounded hover:bg-gray-100 cursor-pointer transition-colors"
+>
         <SidebarMenuItem>
                     <SidebarMenuButton onClick={() => setActiveTab(actionType)}>
                       {textToDisplay} ({currentInsights.length})
                     </SidebarMenuButton>
                   </SidebarMenuItem>
+                  </div>
     )
 }
