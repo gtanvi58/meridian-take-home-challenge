@@ -27,14 +27,18 @@ export default function AccordionComponent({ activeTab, handleAction, getActiveL
 
   return (
     <Accordion type="multiple" className="space-y-6 w-full max-w-4xl mx-auto">
-      {activeInsights.map((insight) => (
+      {activeInsights.map((insight) => {
+        if(insight.title){
+          return (
         <InsightRow
           key={insight.id}
           insight={insight}
           activeTab={activeTab}
           handleAction={handleAction}
         />
-      ))}
+      )
+        }
+      })}
     </Accordion>
   );
 }

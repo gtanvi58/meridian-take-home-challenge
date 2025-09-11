@@ -1,7 +1,6 @@
 [
   {
     "id": 1,
-    "title": "Inventory running low on SKU-A12",
     "priority": "HIGH",
     "category": "Inventory",
     "confidence": 0.87,
@@ -16,7 +15,6 @@
     "category": "Marketing",
     "confidence": 0.81,
     "date": "2025-06-28",
-    "evidence": "https://picsum.photos/seed/review-trend/640/360",
     "suggestedAction": "Boost TikTok post and reply to top comments."
   },
   {
@@ -26,8 +24,7 @@
     "category": "Support",
     "confidence": 0.92,
     "date": "2025-08-02",
-    "evidence": "https://picsum.photos/seed/support/640/360",
-    "suggestedAction": "Add one more support agent for peak hours."
+    "evidence": "https://picsum.photos/seed/support/640/360"
   },
   {
     "id": 4,

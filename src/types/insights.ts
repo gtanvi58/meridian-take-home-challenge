@@ -8,8 +8,8 @@ export type Insight = {
   confidence: number;
   date: string;
   evidence?: string;
-  suggestedAction: string;
-  snoozeUntil: Date
+  suggestedAction?: string;
+  snoozeUntil?: Date
 };
 
 export type ActionType = "snooze" | "dismiss" | "todo" | "complete" | "all";

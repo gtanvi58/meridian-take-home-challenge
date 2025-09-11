@@ -1,5 +1,5 @@
 "use client";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import AccordionComponent from "../components/app-components/AccordionComponent";
 import SideBarComponent from "../components/app-components/SideBarComponent";
@@ -34,6 +34,14 @@ export default function ArakkisView() {
   complete: "Completed Tasks"
 };
 
+useEffect(() => {
+  setAllInsights((prev) => prev.filter((i) => i.title && i.category && i.date));
+  setSnoozed((prev) => prev.filter((i) => i.title && i.category && i.date));
+  setDismissed((prev) => prev.filter((i) => i.title && i.category && i.date));
+  setTodos((prev) => prev.filter((i) => i.title && i.category && i.date));
+  setCompleted((prev) => prev.filter((i) => i.title && i.category && i.date));
+}, []);
+
 
 const filteredList = useMemo(() => {
   let baseList: Insight[] = [];
@@ -61,7 +69,7 @@ const filteredList = useMemo(() => {
       const lowerKeyword = keyword.toLowerCase();
       if (
         !insight.title.toLowerCase().includes(lowerKeyword) &&
-        !insight.suggestedAction.toLowerCase().includes(lowerKeyword) &&
+        !insight.suggestedAction?.toLowerCase().includes(lowerKeyword) &&
         !insight.category.toLowerCase().includes(lowerKeyword)
       ) {
         return false;

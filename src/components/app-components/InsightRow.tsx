@@ -26,6 +26,10 @@ const displayPriority = (priority: Priority) => {
 };
 
 export default function InsightRow({ insight, activeTab, handleAction }: InsightRowProps) {
+
+  if (!insight.title || !insight.category || !insight.date) {
+    return null;
+  }
   const [hoveredTitle, setHoveredTitle] = useState<string | null>(null);
   const [hoverPosition, setHoverPosition] = useState<{ x: number; y: number } | null>(null);
 
@@ -69,10 +73,11 @@ export default function InsightRow({ insight, activeTab, handleAction }: Insight
         </AccordionTrigger>
 
         <AccordionContent className="px-4 pb-4 space-y-3 bg-slate-50 rounded-b-2xl">
-          <div className="bg-white border border-slate-200 p-4 rounded-xl text-sm md:text-base text-slate-700 shadow-sm">
+          {insight.suggestedAction && <div className="bg-white border border-slate-200 p-4 rounded-xl text-sm md:text-base text-slate-700 shadow-sm">
             <span className="font-semibold text-slate-800">Suggested Action:</span>{" "}
             {insight.suggestedAction}
           </div>
+}
 
           {insight.evidence && (
             <img
