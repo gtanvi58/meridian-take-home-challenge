@@ -19,7 +19,11 @@ with open(data_file, "r") as f:
     insights = json.load(f)
 
 context = "\n".join([
-    f"Title: {i['title']}. Category: {i['category']}. Priority: {i['priority']}. Suggested action: {i['suggestedAction']}. Date: {i['date']}."
+    f"Title: {i.get('title', 'N/A')}. "
+    f"Category: {i.get('category', 'N/A')}. "
+    f"Priority: {i.get('priority', 'N/A')}. "
+    f"Suggested action: {i.get('suggestedAction', 'N/A')}. "
+    f"Date: {i.get('date', 'N/A')}."
     for i in insights
 ])
 

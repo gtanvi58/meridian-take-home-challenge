@@ -48,6 +48,7 @@ export default function Filter({
     setLocalKeyword(keyword ?? ""); // sync external keyword -> local input
   }, [keyword]);
 
+  //add items to filters
   const handleToggle = (
     item: string,
     checked: boolean | "indeterminate"
